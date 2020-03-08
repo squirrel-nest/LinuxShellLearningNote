@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0067)http://www.athabascau.ca/html/depts/compserv/webunit/HOWTO/find.htm -->
+<HTML><HEAD><TITLE>Some examples of using Unix find command.</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=gb2312">
+<META content="MSHTML 6.00.6001.18099" name=GENERATOR></HEAD>
+<BODY 
+background=Some%20examples%20of%20using%20Unix%20find%20command_files/bkgrd3.gif>
+<H2>Some examples of using UNIX find command. </H2>
+<H3>Contents: </H3><A 
+href="http://www.athabascau.ca/html/depts/compserv/webunit/HOWTO/find.htm#Introduction">Introduction</A> 
+<BR><A 
+href="http://www.athabascau.ca/html/depts/compserv/webunit/HOWTO/find.htm#EX01">Search 
+for file with a specific name in a set of files (-name) </A><BR><A 
+href="http://www.athabascau.ca/html/depts/compserv/webunit/HOWTO/find.htm#EX02">How 
+to apply a unix command to a set of file (-exec). </A><BR><A 
+href="http://www.athabascau.ca/html/depts/compserv/webunit/HOWTO/find.htm#EX03">How 
+to apply a complex selection of files (-o and -a). </A><BR><A 
+href="http://www.athabascau.ca/html/depts/compserv/webunit/HOWTO/find.htm#EX03">How 
+to search for a string in a selection of files (-exec grep ...). </A><BR><A 
+name=Introduction></A>
+<H3>Introduction </H3>
+<P>The find command allows the Unix user to process a set of files and/or 
+directories in a file subtree. 
+<P>You can specify the following: 
+<UL>
+  <LI>where to search (pathname) 
+  <LI>what type of file to search for (-type: directories, data files, links) 
+  <LI>how to process the files (-exec: run a process against a selected file) 
+  <LI>the name of the file(s) (-name) 
+  <LI>perform logical operations on selections (-o and -a) </LI></UL><A 
+name=EX01></A>
+<H3>Search for file with a specific name in a set of files (-name) </H3>
+<BLOCKQUOTE><KBD>find . -name "rc.conf" -print </KBD></BLOCKQUOTE>
+<P>This command will search in the current directory and all sub directories for 
+a file named <I>rc.conf</I>. 
+<P>Note: The -print option will print out the path of any file that is found 
+with that name. In general -print wil print out the path of any file that meets 
+the find criteria. <A name=EX02></A>
+<H3>How to apply a unix command to a set of file (-exec). </H3>
+<BLOCKQUOTE><KBD>find . -name "rc.conf" -exec chmod o+r '{}' \; 
+</KBD></BLOCKQUOTE>
+<P>This command will search in the current directory and all sub directories. 
+All files named <I>rc.conf</I> will be processed by the <I>chmod -o+r</I> 
+command. The argument '{}' inserts each found file into the chmod command line. 
+The \; argument indicates the exec command line has ended. 
+<P>The end results of this command is all <I>rc.conf</I> files have the other 
+permissions set to read access (if the operator is the owner of the file). 
+<P><A name=EX03></A>
+<H3>How to apply a complex selection of files (-o and -a). </H3>
+<BLOCKQUOTE><KBD>find /usr/src -not \( -name "*,v" -o -name ".*,v" \) '{}' \; 
+  -print </KBD></BLOCKQUOTE>
+<P>This command will search in the <I>/usr/src</I> directory and all sub 
+directories. All files that are of the form '*,v' and '.*,v' are excluded. 
+Important arguments to note are: 
+<UL>
+  <LI><I>-not</I> means the negation of the expression that follows 
+  <LI>\( means the start of a complex expression. 
+  <LI>\) means the end of a complex expression. 
+  <LI><I>-o</I> means a logical or of a complex expression. <BR>In this case the 
+  complex expression is all files like '*,v' or '.*,v' </LI></UL>
+<P>The above example is shows how to select all file that are <I>not</I> part of 
+the RCS system. This is important when you want go through a source tree and 
+modify all the source files... but ... you don't want to affect the RCS version 
+control files. 
+<P>
+<P><A name=EX04></A>
+<H3>How to search for a string in a selection of files (-exec grep ...). </H3>
+<BLOCKQUOTE><KBD>find . -exec grep "www.athabasca" '{}' \; -print 
+</KBD></BLOCKQUOTE>
+<P>This command will search in the current directory and all sub directories. 
+All files that contain the string will have their path printed to standard 
+output. 
+<P>If you want to just find each file then pass it on for processing use the -q 
+grep option. This finds the first occurrance of the search string. It then 
+signals success to find and find continues searching for more files. 
+<BLOCKQUOTE><KBD>find . -exec grep -q "www.athabasca" '{}' \; -print 
+</KBD></BLOCKQUOTE>
+<P>This command is very important for process a series of files that contain a 
+specific string. You can then process each file appropriately. An example is 
+find all html files with the string "www.athabascau.ca". You can then process 
+the files with a sed script to change those occurrances of "www.athabascau.ca" 
+with "intra.athabascau.ca". 
+<P><A href="http://www.athabascau.ca/"><IMG alt="[AU Home Page]" 
+src="Some%20examples%20of%20using%20Unix%20find%20command_files/auhome.gif" 
+align=right border=0></A> <IMG alt="" 
+src="Some%20examples%20of%20using%20Unix%20find%20command_files/au_incis.gif"> 
+<A href="mailto:webunit@athabascau.ca">webunit@athabascau.ca</A><BR><SMALL>This 
+page was last modified on March 30, 1999 by E. Ady.</SMALL> 
+<P>
+<HR SIZE=5>
+</BODY></HTML>

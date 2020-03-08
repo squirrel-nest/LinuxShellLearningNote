@@ -1,0 +1,153 @@
+y8723906@nplan
+
+
+
+
+
+HP-UX ndzy2 B.11.11 U 9000/800 (ta)
+
+login: root
+Password: 
+Please wait...checking for disk quotas
+(c)Copyright 1983-2000 Hewlett-Packard Co.,  All Rights Reserved.
+(c)Copyright 1979, 1980, 1983, 1985-1993 The Regents of the Univ. of California
+(c)Copyright 1980, 1984, 1986 Novell, Inc.
+(c)Copyright 1986-1992 Sun Microsystems, Inc.
+(c)Copyright 1985, 1986, 1988 Massachusetts Institute of Technology
+(c)Copyright 1989-1993  The Open Software Foundation, Inc.
+(c)Copyright 1986 Digital Equipment Corp.
+(c)Copyright 1990 Motorola, Inc.
+(c)Copyright 1990, 1991, 1992 Cornell University
+(c)Copyright 1989-1991 The University of Maryland
+(c)Copyright 1988 Carnegie Mellon University
+(c)Copyright 1991-2000 Mentat Inc.
+(c)Copyright 1996 Morning Star Technologies, Inc.
+(c)Copyright 1996 Progressive Systems, Inc.
+(c)Copyright 1991-2000 Isogon Corporation, All Rights Reserved.
+
+
+                           RESTRICTED RIGHTS LEGEND
+Use, duplication, or disclosure by the U.S. Government is subject to
+restrictions as set forth in sub-paragraph (c)(1)(ii) of the Rights in
+Technical Data and Computer Software clause in DFARS 252.227-7013.
+
+                           Hewlett-Packard Company
+                           3000 Hanover Street
+                           Palo Alto, CA 94304 U.S.A.
+
+Rights for non-DOD U.S. Government Departments and Agencies are as set
+forth in FAR 52.227-19(c)(1,2).
+You have mail.
+                                                                                                        
+Value of TERM has been set to "vt100". 
+WARNING:  YOU ARE SUPERUSER !!
+
+# top
+
+System: ndzy2                                         Mon Jun  5 08:52:28 2006
+Load averages: 0.51, 0.52, 0.52
+141 processes: 131 sleeping, 9 running, 1 zombie  
+Cpu states:
+CPU   LOAD   USER   NICE    SYS   IDLE  BLOCK  SWAIT   INTR   SSYS
+ 0    0.62  10.4%   0.0%  43.6%  46.0%   0.0%   0.0%   0.0%   0.0%
+ 1    0.39   9.2%   0.0%  39.2%  51.6%   0.0%   0.0%   0.0%   0.0%
+---   ----  -----  -----  -----  -----  -----  -----  -----  -----
+avg   0.51   9.8%   0.0%  41.4%  48.8%   0.0%   0.0%   0.0%   0.0%
+
+Memory: 193116K (70272K) real, 348544K (138480K) virtual, 1807248K free  Page# 1/7           
+
+CPU TTY     PID USERNAME PRI NI   SIZE    RES STATE    TIME %WCPU  %CPU COMMAND
+ 1   ?      981 root     230 20 11616K  2012K run   208530:18 100.14 99.97 rpcd
+ 0   ?    25996 tuxedo   155 20 28768K  5824K sleep    0:13  0.81  0.81 physerv
+ 1   ?       35 root     152 20  8064K  8064K run    161:27  0.37  0.37 vxfsd
+ 1   ?      995 root     152 20 16676K  3252K run      2:05  0.23  0.23 dmisp
+ 0 pts/ta  1311 root     178 20  7148K   724K run      0:01  0.18  0.18 top
+ 1   ?     1120 root      20 20 12288K  7620K sleep  751:43  0.17  0.17 cmcld
+ 0   ?    25997 tuxedo   155 20 24976K  2940K sleep    0:03  0.14  0.13 physerv1
+ 0   ?    26021 tuxedo   155 20  5072K   564K sleep    0:07  0.13  0.13 WSL
+ 0   ?     1247 root     152 20 49496K 20452K run     12:58  0.10  0.10 vxsvc
+ 0   ?     1455 root     154 10  4496K   580K sleep  123:15  0.06  0.06 psmctd
+ 0   ?    26022 tuxedo   155 20  6648K  1720K sleep    0:00  0.06  0.06 WSH
+ 0   ?     1151 root     154 20 10796K  1012K sleep    5:36  0.05  0.05 swagentd
+ 0   ?    26028 tuxedo   155 20  5560K   888K sleep    0:00  0.05  0.05 WSH
+ 0   ?    26026 tuxedo   155 20  5752K  1144K sleep    0:00  0.05  0.05 WSH
+ 0   ?    26035 tuxedo   155 20  7480K  2232K sleep    0:00  0.05  0.05 WSH
+ 0   ?      373 root     152 20  2060K    76K run     45:44  0.04  0.04 syncer
+ 1   ?     1018 root     152 20 14176K   420K run      0:27  0.04  0.04 hpuxci
+ 1   ?     1034 root     152 20 12128K   420K run      0:25  0.04  0.04 swci
+ 0   ?    26031 tuxedo   155 20  7480K  1912K sleep    0:00  0.04  0.04 WSH
+ 1   ?     1129 root     154 10  3996K   172K sleep   95:52  0.04  0.04 diagmond
+ 1   ?        0 root     127 20    32K     0K sleep   52:19  0.02  0.02 swapper
+ 0   ?        1 root     168 20   484K   204K sleep    0:00  0.02  0.02 init
+# bdf
+Filesystem          kbytes    used   avail %used Mounted on
+/dev/vg00/lvol3     204800   85544  118368   42% /
+/dev/vg00/lvol1     298928   57480  211552   21% /stand
+/dev/vg00/lvol8    4710400 3314832 1384712   71% /var
+/dev/vg00/lvol7    1720320 1090184  625240   64% /usr
+/dev/vg00/lvol4     614400    2544  607144    0% /tmp
+/dev/vg00/lvol6    1540096 1494096   46000   97% /opt
+/dev/vg00/lvol5    10240000 4910544 5288504   48% /home
+# ioscan -funC disk
+Class     I  H/W Path      Driver S/W State   H/W Type     Description
+=======================================================================
+disk      0  0/0/1/1.2.0   sdisk  CLAIMED     DEVICE       HP 36.4GST336753LC
+                          /dev/dsk/c1t2d0   /dev/rdsk/c1t2d0
+disk      1  0/0/2/0.2.0   sdisk  CLAIMED     DEVICE       HP 36.4GST336753LC
+                          /dev/dsk/c2t2d0   /dev/rdsk/c2t2d0
+disk      2  0/0/2/1.2.0   sdisk  CLAIMED     DEVICE       HP      DVD-ROM 305
+                          /dev/dsk/c3t2d0   /dev/rdsk/c3t2d0
+disk      3  0/10/0/0.8.0.255.0.0.0  sdisk  CLAIMED     DEVICE       HP 73.4GST373307FC
+                          /dev/dsk/c4t0d0   /dev/rdsk/c4t0d0
+disk      4  0/10/0/0.8.0.255.0.1.0  sdisk  CLAIMED     DEVICE       HP 73.4GST373307FC
+                          /dev/dsk/c4t1d0   /dev/rdsk/c4t1d0
+disk      5  0/10/0/0.8.0.255.0.2.0  sdisk  CLAIMED     DEVICE       HP 73.4GST373307FC
+                          /dev/dsk/c4t2d0   /dev/rdsk/c4t2d0
+disk      6  0/10/0/0.8.0.255.0.3.0  sdisk  CLAIMED     DEVICE       HP 73.4GST373307FC
+                          /dev/dsk/c4t3d0   /dev/rdsk/c4t3d0
+# cd /tmp
+# ls -l
+total 336
+drwx------   2 root       root            96 Sep 14  2005 .AgentSockets
+-rw----r--   1 root       root             0 Sep 14  2005 .VRTSisisshmem
+drwxrwxrwx   2 oracle     oinstall        96 Jun 23  2005 .oracle
+-rw-r-----   1 sync       netmaster    26221 Oct 15  2005 20050731-serviceflow-oss-default
+-rw-r--r--   1 root       sys             69 May 23  2003 V2C-RUN_config.log
+-rw-r--r--   1 root       sys           2944 May 23  2003 dtappint.log
+drwxrwxrwx   2 root       sys             96 Sep 11  2003 hp
+-rw-rw-rw-   1 root       sys          27372 Sep 29  2003 if
+-rw-rw-rw-   1 root       sys          27474 Sep 29  2003 ifconfig.txt
+-r--r--r--   1 root       sys           1264 May 23  2003 install.vars
+-r--r--r--   1 root       root             0 Sep 14  2005 llbdbase.dat
+drwxr-xr-x   2 root       root            96 May 23  2003 lost+found
+-rw-r--r--   1 root       root             0 Sep 14  2005 nohup.out
+srwxrwxrwx   1 root       root             0 Sep 14  2005 portal
+-rw-------   1 root       root           224 Sep 14  2005 portmap.file
+-rw-r--r--   1 root       sys            128 Jul 11  2005 root.errorlog
+-rw-------   1 root       root           964 Sep 14  2005 rpcbind.file
+-rw-r--r--   1 root       sys             56 May 23  2003 sd_ipd_acl.223
+-rw-r--r--   1 root       root            99 Sep 14  2005 sys.tst_systest
+drwxrwxrwx   2 tuxedo     users           96 Aug 24  2004 tx0007fa100005
+-rw-r--r--   1 root       sys              0 May 23  2003 usb_ioscan2433.out
+-rw-rw-rw-   1 root       sys             37 Sep 11  2003 vgdata.map
+-rw-r--r--   1 root       sys              0 May 23  2003 vxvm_swlist_output
+# pvdiskplay /dev/dsk/c4t0d0
+sh: pvdiskplay:  not found.
+# pvdisplay -v /dev/dsk/c4t0d0|more
+pvdisplay: Warning: couldn't query physical volume "/dev/dsk/c4t0d0":
+The specified path does not correspond to physical volume attached to 
+this volume group
+pvdisplay: Warning: couldn't query physical volume "/dev/dsk/c4t1d0":
+The specified path does not correspond to physical volume attached to 
+this volume group
+pvdisplay: Warning: couldn't query physical volume "/dev/dsk/c4t2d0":
+The specified path does not correspond to physical volume attached to 
+this volume group
+pvdisplay: Warning: couldn't query physical volume "/dev/dsk/c4t3d0":
+The specified path does not correspond to physical volume attached to 
+this volume group
+pvdisplay: Warning: couldn't query all of the physical volumes.
+pvdisplay: Couldn't retrieve the names of the physical volumes
+belonging to volume group "/dev/vgdata".
+pvdisplay: Cannot display physical volume "/dev/dsk/c4t0d0".
+#   

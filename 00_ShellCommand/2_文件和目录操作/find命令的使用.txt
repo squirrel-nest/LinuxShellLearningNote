@@ -1,0 +1,14 @@
+http://www.cnblogs.com/xudong-bupt/archive/2013/03/23/2976793.html
+linux下的find文件查找命令与grep文件内容查找命令
+
+查找文件：
+  find . -name alert*.log -print
+
+查找文件内容：
+ grep
+
+
+linux grep命令
+http://www.cnblogs.com/end/archive/2012/02/21/2360965.html
+
+

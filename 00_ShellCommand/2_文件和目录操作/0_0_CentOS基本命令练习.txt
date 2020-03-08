@@ -1,0 +1,16 @@
+
+CentOS基本命令练习
+
+http://www.centoscn.com/CentosBug/osbug/2015/0825/6061.html
+
+
+显示/etc目录下，以非字母开头，后面跟了一具字母及其任意长度任意字符的文件或目录
+[root@localhost~]#  mkdir -vp /etc/{1sdf,2wer,3dfg}
+mkdir: created directory `/etc/1sdf'
+mkdir: created directory `/etc/2wer'
+mkdir: created directory `/etc/3dfg'
+[root@localhost ~]#  ls -d /etc/[^a-z]*
+/etc/1sdf /etc/2wer  /etc/3dfg
+[root@localhost ~]# rmdir/etc/{1sdf,2wer,3dfg}
+[root@localhost ~]#  ls -d /etc/[^a-z]*
+ls: cannot access /etc/[^a-z]*: No suchfile or directory

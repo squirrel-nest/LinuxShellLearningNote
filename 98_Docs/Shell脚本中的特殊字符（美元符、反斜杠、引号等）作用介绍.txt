@@ -1,0 +1,2 @@
+Shell脚本中的特殊字符（美元符、反斜杠、引号等）作用介绍
+https://www.jb51.net/article/65820.htm

@@ -1,0 +1,2 @@
+用shell脚本监控进程是否存在 不存在则启动的实例
+http://www.cnblogs.com/zdz8207/p/linux-shell-processString.html

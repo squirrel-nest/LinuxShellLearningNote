@@ -1,0 +1,400 @@
+cp -r -a rm_gz rm_sz
+
+
+
+Linux实用命令创建目录复制等(2009-07-28 17:25:20)转载▼标签： it 分类： 软件相关  
+1. 创建目录
+
+     mkdir
+
+     NO1. 在当前路径创建一级目录
+
+          [root@rehat root]# mkdir test
+
+     NO2. 在当前路径创建多级目录
+
+          [root@rehat root]# mkdir -p mytest/test1/test1_1
+
+     NO3. 在创建目录的同时给新建的目录赋权限
+
+          [root@rehat root]# mkdir -m 777 testmod
+
+          这样任何人对此目录都有任何权限
+
+     2. 复制文件与文件夹
+
+     cp
+
+     NO1. 复制指定目录的文件到当前目录，并重命名
+
+          [root@rehat root]# cp ~/.bashrc bashrc_bak
+
+     NO2. 强制复制指定目录的文件到当前目录，而不管当前目录是否含有该文件
+
+          [root@rehat root]# cp -f ~/.bashrc bashrc
+
+     NO2. 复制指定目录到当前目录
+
+          [root@rehat root]# cp -r /root/test .
+
+          [root@rehat root]# cp -r /root/test/ .
+
+          两者效果一样，在复制目录时，会将源路径的最后一级目录全部复制过去，包括它本身。
+
+     NO3. 复制指定目录的文件到指定目录
+
+          [root@rehat root]# cp ~/.bashrc /bak/.bashrc
+
+     NO4. 在复制时将源文件的全部属性也复制过来。若不指定参数，则目标文件与源文件属性可能不一致。
+
+          [root@rehat root]# cp -a ~/.bashrc /bak/.bashrc
+
+     NO5. 若两个文件夹要保证同步，一个文件的改了，另一个文件也跟着改，但是要保证两个文件的文件都是最新的。
+
+          [root@rehat root]# cp -u /src/.bashrc /bak_src/bashrc
+
+     3. 建立链接文件，包括硬链接与软链接
+
+     ln
+
+     NO1. 建立类似于 Windows 的快捷方式
+
+          [root@rehat root]# ln -s test.txt test.txt_slnk
+
+     NO2. 当想备份一个文件，但空间又不够，则可以为该文件建立一个硬连接。这样，就算原文件删除了，只要该
+
+          链接文件没被删除，则在存储空间里还是没有被删除。
+
+          [root@rehat root]# ln -l test.txt test.txt_hlnk
+
+     4. 删除文件
+
+     rm
+
+     NO1. 删除当前目录的文件
+
+          [root@rehat root]# rm test.txt
+
+     NO2. 强制删除当前目录的文件，不弹出提示
+
+          [root@rehat root]# rm -f test.txt
+
+     NO3. 强制删除整个目录，包括目录与文件全部删除，需要管理员权限
+
+          [root@rehat root]# rm -r -f test
+
+     5. 删除文件夹
+
+     rmdir
+
+     NO1. 删除一个空目录
+
+          [root@rehat root]# rmdir emptydir
+
+     NO2. 删除多级空目录
+
+          [root@rehat root]# rmdir -p emptydir/d1/d11
+
+     6. 挂载文件系统与卸载文件系统
+
+     mount / umount
+
+     NO1. 挂载光驱
+
+          [root@rehat root]# mount -t iso9660 /dev/cdrom /mnt/cdrom
+
+     NO2. 挂载光驱，支持中文
+
+          [root@rehat root]# mount -t iso9660 -o codepage=936,iocharset=cp936 /dev/cdrom /mnt/cdrom
+
+     NO3. 挂载 Windows 分区，FAT文件系统
+
+          [root@rehat root]# mount -t vfat /dev/hda3 /mnt/cdrom
+
+     NO4. 挂载 Windows 分区，NTFS文件系统
+
+          [root@rehat root]# mount -t ntfs -o iocharset=cp936 /dev/hda7 /mnt/had7
+
+     No5. 挂载 ISO 文件
+
+          [root@rehat root]# mount -o loop /abc.iso /mnt/cdrom
+
+     NO6. 挂载 软驱
+
+          [root@rehat root]# mount /dev/fd0 /mnt/floppy
+
+     NO7. 挂载闪盘
+
+          [root@rehat root]# mount /dev/sda1 /mnt/cdrom
+
+     NO8. 挂载 Windows 操作系统共享的文件夹
+
+          [root@rehat root]# mount -t smbfs -o username=guest,password=guest //machine/path /mnt/cdrom
+
+     NO9. 显示挂载的文件系统
+
+          [root@rehat root]# mount
+
+          [root@rehat root]# cat /etc/fstab        显示系统启动自动加载的文件系统
+
+          [root@rehat root]# cat /etc/mtab        显示当前加载的文件系统
+
+     7. 检查磁盘空间
+
+     df
+
+     NO1. 显示所有存储系统空间使用情况,同时显示存储系统的文件系统类型s
+
+          [root@rehat root]# df -aT
+
+     NO2. 显示指定文件系统的空间使用情况
+
+          [root@rehat root]# df -t ext3
+
+     NO3. 人性化显示各存储空间大小
+
+          [root@rehat root]# df -ah
+
+     NO4. 有时候挂载了网络文件系统，若只想看本机的文件系统用如下命令
+
+          [root@rehat root]# df -ahlT
+
+     NO5. 查看某个文件系统的磁盘使用情况
+
+          [root@rehat root]# df -h /dev/cdrom
+
+   8. 检查目录空间大小
+
+     du
+
+     NO1. 查看当前文件夹大小
+
+          [root@rehat root]# du -sh
+
+     NO2. 查看当前文件及文件中包含的子文件夹大小
+
+          [root@rehat root]# du -ch
+
+     NO3. 查看文件的大小
+
+          [root@rehat root]# du -h test1.txt
+
+     NO4. 同时查看多个文件的大小
+
+          [root@rehat root]# du -h test1.txt test2.txt
+
+     9. 磁盘碎片整理
+
+     linux 下基本上不用碎片整理，它每隔一段时间会自动整理
+
+     10. 创建/改变文件系统
+
+      NO1. 创建文件系统类型
+
+           [root@rehat root]# umount /dev/sdb1
+
+           [root@rehat root]# mkfs -t ext3 /dev/db1
+
+           [root@rehat root]# mount /dev/sdb1 /practice
+
+      11. 改变文件或文件夹权限
+
+      chmod
+
+      NO1. 将自己的笔记设为只有自己才能看
+
+           [root@rehat root]# chmod go-rwx test.txt
+
+           或者
+
+           [root@rehat root]# chmod 700 test.txt
+
+      NO2. 同时修改多个文件的权限
+
+           [root@rehat root]# chmod 700 test1.txt test2.txt
+
+      NO3. 修改一个目录的权限，包括其子目录及文件
+
+           [root@rehat root]# chmod 700 -R test
+
+      12. 改变文件或文件夹拥有者
+
+      chown 该命令只有 root 才能使用
+
+      NO1. 更改某个文件的拥有者
+
+           [root@rehat root]# chown jim:usergroup test.txt
+
+      NO2. 更改某个目录的拥有者,并包含子目录
+
+           [root@rehat root]# chown jim:usergroup -R test
+
+      13. 查看文本文件内容
+
+      cat
+
+      NO1. 查看文件内容，并在每行前面加上行号
+
+           [root@rehat root]# cat -n test.txt
+
+      NO2. 查看文件内容，在不是空行的前面加上行号
+
+           [root@rehat root]# cat -b test.txt
+
+      NO3. 合并两个文件的内容
+
+           [root@rehat root]# cat test1.txt test2.txt > test_new.txt
+
+      NO4. 全并两具文件的内容，并追回到一个文件
+
+           [root@rehat root]# cat test1.txt test2.txt >> test_total.txt
+
+      NO5. 清空某个文件的内容
+
+           [root@rehat root]# cat /dev/null > test.txt
+
+      NO6. 创建一个新的文件
+
+           [root@rehat root]# cat > new.txt 按 CTRL + C 结束录入
+
+      14. 编辑文件文件
+
+      vi
+
+      NO1. 新建档案文件
+
+           [root@rehat root]# vi newfile.txt
+
+      NO2. 修改档案文件
+
+           [root@rehat root]# vi test.txt   test.txt 已存在
+
+      NO3. vi 的两种工作模式：命令模式，编辑模式
+
+      NO4. 进入 vi 后为命令模式，按 Insrt 键进入编辑模式
+
+           按 ESC 进入命令模式，在命令模式不能编辑，只能输入命令
+
+      NO5. 命令模式常用命令
+
+           :w 保存当前文档
+
+           :q 直接退出 vi
+
+           :wq 先保存后退出
+
+      15. 路径操作
+
+      cd pwd
+
+      NO1. 显示当前路径
+
+           [root@rehat root]# pwd
+
+      NO2. 返回用户主目录
+
+           [root@rehat root]# cd
+
+      NO3. 改变到其它路径
+
+           [root@rehat root]# cd /etc
+
+      NO4. 返回到上一级目录
+
+           [root@rehat root]# cd ..
+
+      NO5. 返回到根目录
+
+           [root@rehat root]# cd /
+
+     16. 查询文件或文件夹
+
+      find
+
+      NO1. 查找当前用户主目录下的所有文件
+
+           [root@rehat root]# find ~
+
+      NO2. 让当前目录中文件属主具有读、写权限，并且文件所属组的用户和其他用户具有读权限的文件；
+
+           [root@rehat root]# find . -perm 644 -exec ls -l {} \;
+
+      NO3. 为了查找系统中所有文件长度为0的普通文件，并列出它们的完整路径；
+
+           [root@rehat root]# find / size 0 -type f -exec ls -l {} \;
+
+      NO4. 查找/var/logs目录中更改时间在7日以前的普通文件，并在删除之前询问它们；
+
+           [root@rehat root]# find /var/logs -mtime +7 -type f -ok rm -i {} \;
+
+      NO5. 为/找系统中所有属于root组的文件；
+
+           [root@rehat root]# find / -group root -exec ls -l {} \;
+
+      NO6. find命令将删除当目录中访问时间在7日以来、含有数字后缀的admin.log文件
+
+           [root@rehat root]# find . -name "admin.log[0-9][0-9][0-9]" -atime -7 -ok rm { } \;
+
+      NO7. 为了查找当前文件系统中的所有目录并排序
+
+           [root@rehat root]# find . -type d | sort
+
+      NO8. 为了查找系统中所有的rmt磁带设备
+
+           [root@rehat root]# find /dev/rmt
+
+      17. 显示文件/文件夹清单
+
+      ls / dir
+
+      NO1. 显示所有文件，包括以.开头的隐含文件
+
+           [root@rehat root]# ls -a
+
+      NO2. 显示文件的详细信息
+
+           [root@rehat root]# ls -l
+
+      NO3. 显示当前目录及所有子目录信息
+
+           [root@rehat root]# ls -Rl
+
+      NO4. 以时间排序显示目录,这在找最新文件有用
+
+           [root@rehat root]# ls -tl
+
+      NO5. 以文件大小排序
+
+           [root@rehat root]# ls -Sl
+
+      NO6. 显示文件大小,并按大小排序
+
+           [root@rehat root]# ls -s -l -S
+
+      18. 移动或更改文件/文件夹名称
+
+      mv 与 cp命令用法相似
+
+      NO1. 若移动目标文件已存在，要在移动之前，先备份原来的目录文件
+
+           [root@rehat root]# mv -b test.txt test2/
+
+           这样在 test2 下将有两个文件 test.txt 及 text.txt~
+
+           其中 test.txt~ 是备份文件，test.txt是新的文件
+
+      NO2. 若移动目标文件已存在，但不想弹出是否覆盖的提示，直接覆盖
+
+           [root@rehat root]# mv -f test.txt test2/
+
+      NO3. 当源与目标都拥有同一个文件，若源文件比目标新则移动，否则不移动
+
+           [root@rehat root]# mv -u test.txt test2/
+
+      NO4. 更改文件名称
+
+           [root@rehat root]# mv test.txt test2.txt
+
+      NO5. 更改目录名称
+
+           [root@rehat root]# mv /test2 /test2_2

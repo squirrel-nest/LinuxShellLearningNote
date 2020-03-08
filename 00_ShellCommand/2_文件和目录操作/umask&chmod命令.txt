@@ -1,0 +1,9 @@
+umask命令
+https://www.ibm.com/support/knowledgecenter/zh/ssw_aix_71/com.ibm.aix.cmds5/umask.htm
+
+Linux下umask命令的用法
+http://blog.csdn.net/dustin_cds/article/details/50507613
+
+
+umask -S
+u=rwx,g=rx,o=rx

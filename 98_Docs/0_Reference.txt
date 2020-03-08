@@ -1,0 +1,22 @@
+LDP£ºLinux Documentation Project
+
+Advanced Bash-Scripting Guide:
+
+Chapter 3. Special Characters
+http://tldp.org/LDP/abs/html/special-chars.html
+
+
+
+http://tldp.org/LDP/abs/html/comparison-ops.html
+
+
+
+http://tldp.org/LDP/abs/html/exit-status.html
+Chapter 6. Exit and Exit Status
+
+
+7.1. Test Constructs
+
+7.1. Introduction to if
+
+24.2. Local Variables
